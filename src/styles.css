@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Hammersmith One', sans-serif; 
+  }
+
+  button {
+    color: white;
+    border: none;
+    border-radius: 50%; 
+    width: 40px;
+    height: 40px; 
+    padding: 8px; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+  } 
+  
+  button:disabled {
+    background-color: #adadad; 
+    cursor: default;
+  }
+
+  .add-button {
+    background-color: #4CAF50; 
+  }
+  
+  .edit-button {
+    background-color: #2196F3; 
+  }
+  
+  .save-button {
+    background-color: #008CBA; 
+  }
+  
+  .cancel-button {
+    background-color: #f44336;  
+  }
+  
+  .delete-button {
+    background-color: #e74c3c; 
+  }
+  

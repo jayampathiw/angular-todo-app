@@ -1,0 +1,26 @@
+.container {
+  width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 19px;
+  background: #e0e0e0;
+  box-shadow: 20px 20px 45px #bebebe, -20px -20px 45px #ffffff;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+input[type="text"] {
+  width: calc(100% - 80px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+}

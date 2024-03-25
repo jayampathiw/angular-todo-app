@@ -1,0 +1,25 @@
+<li [class.completed]="task.completed">
+  <div class="content">
+    <input
+      type="checkbox"
+      (change)="toggleCompleted()"
+      [checked]="task.completed"
+    />
+    <span *ngIf="!editMode">{{ task.title }}</span>
+    <input *ngIf="editMode" type="text" [(ngModel)]="task.title" />
+  </div>
+  <div class="controls">
+    <button class="edit-button" *ngIf="!editMode" [disabled]="task.completed" (click)="toggleEditMode()">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button class="save-button" *ngIf="editMode" (click)="saveEdit()">
+      <i class="fas fa-check"></i>
+    </button>
+    <button class="cancel-button" *ngIf="editMode" (click)="cancelEdit()">
+      <i class="fas fa-times"></i>
+    </button>
+    <button class="delete-button" (click)="onDelete()">
+      <i class="fas fa-trash"></i>
+    </button>
+  </div>
+</li>

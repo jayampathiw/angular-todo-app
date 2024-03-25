@@ -1,27 +1,49 @@
-# AngularTodoApp
+# Angular Todo List Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.1.
+A simple yet effective todo list application built with Angular, demonstrating core Angular concepts and local storage integration.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+* Add new tasks
+* Mark tasks as completed
+* Edit existing tasks
+* Delete tasks
+* Persist tasks in the browser's local storage
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Prerequisites:**
 
-## Build
+* Node.js (version 10 or later) and npm
+* Angular CLI (check installation with `ng version`)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**Installation**
 
-## Running unit tests
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/your-username/angular-todo-app](https://github.com/your-username/angular-todo-app)
+2. Install dependencies:
+    ```bash
+    cd angular-todo-app
+    npm install
+3. Run the Development Server
+    ```bash
+    ng serve -o 
+    
+**Project Structure:**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* src/app
+    * todo-list.component.*
+    * todo-item.component.*
+    * task.service.ts
+    * app.component.*
+    
+**Technical Overview**
+* Key technologies and concepts used:
+* Angular (17)
+* TypeScript
+* Components
+* Forms (template-driven or reactive)
+* Event Binding
+* Services
+* Local Storage

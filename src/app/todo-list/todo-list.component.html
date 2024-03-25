@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>My Todo List</h1>
+
+  <form #newTaskForm="ngForm" (ngSubmit)="addTask(newTaskForm)">
+    <input
+      type="text"
+      placeholder="Add new task..."
+      name="task"
+      [(ngModel)]="newTask"
+      required
+    />
+    <button type="submit" class="add-button" [disabled]="!newTaskForm.form.valid">
+      <i class="fas fa-plus"></i>
+    </button>
+  </form>
+
+  <ul>
+    <app-todo-item
+      *ngFor="let task of tasks; let i = index"
+      [task]="task"
+      (delete)="deleteTask(i)"
+      (edit)="editTask($event, i)"
+      (completed)="completeTask(i)"
+    >
+    </app-todo-item>
+  </ul>
+</div>
