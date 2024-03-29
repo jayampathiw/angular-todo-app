@@ -1,49 +1,50 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, signal } from '@angular/core';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
-import { NgFor } from '@angular/common';
+import { AsyncPipe, NgFor } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
-import { TaskService } from '../task.service';
+import { provideComponentStore } from '@ngrx/component-store';
+import { TodoTaskStoreService, Task } from '../state/todo.state';
 
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [TodoItemComponent, NgFor, FormsModule],
+  imports: [TodoItemComponent, NgFor, FormsModule, AsyncPipe],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css',
+  providers: [provideComponentStore(TodoTaskStoreService)],
 })
 export class TodoListComponent implements OnInit {
-  tasks: { title: string; completed: boolean }[] = [];
+  tasks$ = signal(this.taskService.tasks$);
   newTask = '';
 
   @ViewChild('newTaskForm')
   newTaskForm!: NgForm;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TodoTaskStoreService) {}
 
-  ngOnInit() {
-    this.tasks = this.taskService.getTasks(); 
-  }
+  ngOnInit() {}
 
   addTask(form: NgForm) {
     if (form.valid) {
-      this.taskService.addTask({ title: this.newTask, completed: false });
+      this.taskService.addTask({
+        id: new Date().getTime(),
+        title: this.newTask,
+        completed: false,
+      });
       this.newTask = '';
       form.resetForm();
     }
   }
 
-  deleteTask(index: number) {
-    this.taskService.deleteTask(index)
+  deleteTask(deletedTask: Task) {
+    this.taskService.deleteTask(deletedTask);
   }
 
-  completeTask(index: number) {
-    const item = this.tasks[index];
-    this.taskService.editTask(index, {...item, completed: !item.completed})
+  completeTask(task: Task) {
+    this.taskService.editTask(task);
   }
 
-  editTask(event: { title: string }, index: number) {
-    this.tasks[index].title = event.title;
-    this.taskService.editTask(index, this.tasks[index])
+  editTask(task: Task) {
+    this.taskService.editTask(task);
   }
-
 }

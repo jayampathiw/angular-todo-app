@@ -1,6 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Task } from '../state/todo.state';
 
 @Component({
   selector: 'app-todo-item',
@@ -10,11 +11,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './todo-item.component.css',
 })
 export class TodoItemComponent {
-  @Input()
-  task!: { title: string; completed: boolean };
+  @Input() task!: Task;
   @Output() delete = new EventEmitter<void>();
   @Output() completed = new EventEmitter<void>();
-  @Output() edit = new EventEmitter<{ title: string }>();
+  @Output() edit = new EventEmitter<Task>();
 
   editMode = false;
 
@@ -23,7 +23,7 @@ export class TodoItemComponent {
   }
 
   saveEdit() {
-    this.edit.emit({ title: this.task?.title });
+    this.edit.emit({ ...this.task });
     this.editMode = false;
   }
 
@@ -32,10 +32,10 @@ export class TodoItemComponent {
   }
 
   toggleCompleted() {
-    this.completed.emit(); 
+    this.completed.emit();
   }
 
   onDelete() {
-    this.delete.emit(); 
+    this.delete.emit();
   }
 }
