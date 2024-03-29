@@ -1,40 +1,52 @@
 body {
-    font-family: 'Hammersmith One', sans-serif; 
-  }
+  font-family: "Hammersmith One", sans-serif;
+  background-image: url("./assets/background_image.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  button {
-    color: white;
-    border: none;
-    border-radius: 50%; 
-    width: 40px;
-    height: 40px; 
-    padding: 8px; 
-    cursor: pointer;
-    transition: background-color 0.3s; 
-  } 
-  
-  button:disabled {
-    background-color: #adadad; 
-    cursor: default;
-  }
+button {
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-  .add-button {
-    background-color: #4CAF50; 
-  }
-  
-  .edit-button {
-    background-color: #2196F3; 
-  }
-  
-  .save-button {
-    background-color: #008CBA; 
-  }
-  
-  .cancel-button {
-    background-color: #f44336;  
-  }
-  
-  .delete-button {
-    background-color: #e74c3c; 
-  }
-  
+button:disabled {
+  background-color: #adadad;
+  cursor: default;
+}
+
+.add-button {
+  background-color: #4caf50;
+}
+
+.edit-button {
+  background-color: #2196f3;
+}
+
+.save-button {
+  background-color: #008cba;
+}
+
+.cancel-button {
+  background-color: #f44336;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+}
+
+html,
+body,
+app-root {
+  min-height: 100vh;
+}
+
+app-root {
+  display: grid;
+}

@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Task } from '../state/todo.state';
 
@@ -11,7 +11,7 @@ import { Task } from '../state/todo.state';
   styleUrl: './todo-item.component.css',
 })
 export class TodoItemComponent {
-  @Input() task!: Task;
+  task = input.required<Task>();
   @Output() delete = new EventEmitter<void>();
   @Output() completed = new EventEmitter<void>();
   @Output() edit = new EventEmitter<Task>();
@@ -23,7 +23,7 @@ export class TodoItemComponent {
   }
 
   saveEdit() {
-    this.edit.emit({ ...this.task });
+    this.edit.emit({ ...this.task() });
     this.editMode = false;
   }
 

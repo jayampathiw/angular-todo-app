@@ -1,15 +1,20 @@
-<li [class.completed]="task.completed">
+<li [class.completed]="task().completed">
   <div class="content">
     <input
       type="checkbox"
       (change)="toggleCompleted()"
-      [checked]="task.completed"
+      [checked]="task().completed"
     />
-    <span *ngIf="!editMode">{{ task.title }}</span>
-    <input *ngIf="editMode" type="text" [(ngModel)]="task.title" />
+    <span *ngIf="!editMode">{{ task().title }}</span>
+    <input *ngIf="editMode" type="text" [(ngModel)]="task().title" />
   </div>
   <div class="controls">
-    <button class="edit-button" *ngIf="!editMode" [disabled]="task.completed" (click)="toggleEditMode()">
+    <button
+      class="edit-button"
+      *ngIf="!editMode"
+      [disabled]="task().completed"
+      (click)="toggleEditMode()"
+    >
       <i class="fas fa-edit"></i>
     </button>
     <button class="save-button" *ngIf="editMode" (click)="saveEdit()">
